@@ -1,6 +1,7 @@
 import sys
-sys.path.append(r'C:\Users\TSB\Downloads\AutoTest\KPCFS\Input')
+sys.path.append(r'C:\Users\nhatn\Downloads\Python\KPCFS-AutoTest\KPCFS\Input')
 import Dictionary
+from datetime import datetime
 ####################### SET UP CONNECTION ORACLE DB #######################
 # Connect to the Oracle database
 conn = Dictionary.cx_Oracle.connect(
@@ -20,8 +21,8 @@ cur.close()
 conn.close()
 ###########################################################################
 # Information of Doc
-file_path = r'D:\IFCL-test.xlsx' 
-df = Dictionary.pd.read_excel('D:/IFCL-test.xlsx')
+file_path = r'C:\Users\nhatn\Downloads\Python\KPCFS-AutoTest\KPCFS\ExcelFile\IFCL-test.xlsx' 
+df = Dictionary.pd.read_excel('C:/Users/nhatn/Downloads/Python/KPCFS-AutoTest/KPCFS/ExcelFile/IFCL-test.xlsx')
 column_index = 4
 M_BL = df.iloc[2, column_index]
 Container_No = df.iloc[2, column_index+1]
@@ -57,3 +58,9 @@ while not Dictionary.pd.isnull(Container_No):
 UserID='TSB'
 Passpord='SUCCESS99'
 
+## Popup unhappies in Manifest List
+today = datetime.now().date()
+today_format = today.strftime("[%Y-%m-%d]")
+message_1='Delivery Order should be later than '+ today_format
+message_2='is using on other manifest.Please check again!'
+stringx=[message_1,message_2]

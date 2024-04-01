@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r'C:\Users\TSB\Downloads\AutoTest\KPCFS\Input')
+sys.path.append(r'C:\Users\nhatn\Downloads\Python\KPCFS-AutoTest\KPCFS\Input')
 import Function
 import Dictionary
 import Workspace
@@ -99,6 +99,7 @@ for n in range(len(Workspace.M_BL_list)):
  Index=Function.find_index_by_text(ButtonSave,'Save')
  driver.execute_script("arguments[0].click();", ButtonSave[Index]) 
  #######################################
+ time.sleep(1)
  div_elements = driver.find_elements(Dictionary.By.CSS_SELECTOR, 'div[data-ref="toolEl"].x-tool-tool-el.x-tool-img.x-tool-close[role="presentation"]')
  Function.find_icon_close_X(driver,div_elements)
  ##########################################

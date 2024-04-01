@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r'C:\Users\TSB\Downloads\AutoTest\KPCFS\Input')
+sys.path.append(r'C:\Users\nhatn\Downloads\Python\KPCFS-AutoTest\KPCFS\Input')
 import Function
 import Dictionary
 import Workspace
@@ -49,10 +49,14 @@ def generate_driver_id():
     digits = ''.join(random.choices(string.digits, k=5))  # Random 5 digits
     return f"{prefix}{digits}"
 
-def find_index_by_text(elements, target_text):
+def find_index_by_text(elements, target_text, partial_match=False):
     for i, element in enumerate(elements):
-        if element.text == target_text:
-            return i
+        if partial_match:
+            if target_text in element.text:
+                return i
+        else:
+            if element.text == target_text:
+                return i
     return None
 
 def find_index_by_attribute(elements, attribute_name, target_value):
@@ -84,7 +88,10 @@ def find_icon_close_X(driver,div_elements):
                 driver.execute_script("arguments[0].click();", driver.find_element(Dictionary.By.ID, div_id))
                 break
             finally:
+                print("ABCDE")
                 break
+        except Dictionary.NoSuchElementException:
+            break
 
 # Input value HBL_Viewlist want to check and list of H_BL
 def check_first_hbl_textbox(driver,HBL_Viewlist,H_BL):

@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r'C:\Users\TSB\Downloads\AutoTest\KPCFS\Input')
+sys.path.append(r'C:\Users\nhatn\Downloads\Python\KPCFS-AutoTest\KPCFS\Input')
 import Function
 import Dictionary
 import Workspace

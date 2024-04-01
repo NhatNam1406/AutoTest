@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r'C:\Users\TSB\Downloads\AutoTest\KPCFS\Input')
+sys.path.append(r'C:\Users\nhatn\Downloads\Python\KPCFS-AutoTest\KPCFS\Input')
 import Function
 import Dictionary
 import Workspace
@@ -60,6 +60,7 @@ if (textbox_input_fields is not None) and (textbox_input_fields_1 is not None):
     Indate=driver.find_element(Dictionary.By.ID,ID_GID)
     Outdate=driver.find_element(Dictionary.By.ID,ID_GOD)
     Indate.send_keys(Dictionary.Keys.CONTROL + "a", Dictionary.Keys.DELETE)
+    time.sleep(1)
     Outdate.send_keys(Dictionary.Keys.CONTROL + "a", Dictionary.Keys.DELETE)
     print('Clear Time Successfully')
 else:

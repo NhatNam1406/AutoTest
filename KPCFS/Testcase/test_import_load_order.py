@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r'C:\Users\TSB\Downloads\AutoTest\KPCFS\Input')
+sys.path.append(r'C:\Users\nhatn\Downloads\Python\KPCFS-AutoTest\KPCFS\Input')
 import Function
 import Dictionary
 import Workspace
@@ -192,6 +192,7 @@ if (Status == 'Booked'):
     print('Start to delivery line:',n)
     line_element = Dictionary.WebDriverWait(driver, 120).until(Dictionary.EC.presence_of_all_elements_located((Dictionary.By.CLASS_NAME, 'x-grid-cell-inner')))
     index_to_add = Function.find_index_by_text(line_element,Workspace.H_BL[n])
+    time.sleep(1)
     index_to_payment = index_to_add + 4
     Payment_Status.append(line_element[index_to_payment].text)
     Line.append(line_element[index_to_add])
@@ -334,9 +335,10 @@ if (Status == 'Booked'):
         try:          
           PrintButton =Dictionary.WebDriverWait(driver, 10).until(Dictionary.EC.presence_of_all_elements_located((Dictionary.By.CLASS_NAME,'x-btn-inner-default-small')))
           Index= Function.find_index_by_text(PrintButton,'Print')
+          time.sleep(4)
           driver.execute_script("arguments[0].click();",PrintButton[Index])
           driver.switch_to.window(driver.window_handles[-1])
-          time.sleep(3)
+          time.sleep(4)
         finally:
           driver.close()
           driver.switch_to.window(driver.window_handles[0])
